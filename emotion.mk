@@ -16,9 +16,9 @@
 $(call inherit-product, device/zte/axon7/full_axon7.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/emotion/configs/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_axon7
+PRODUCT_NAME := emotion_axon7
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="P996A01_N" \

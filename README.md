@@ -1,4 +1,4 @@
-Copyright 2017 - The LineageOS Project
+Copyright 2017 - The EmotionOS Project
 
 Device configuration for ZTE Axon 7.
 =====================================

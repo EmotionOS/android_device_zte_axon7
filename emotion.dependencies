@@ -1,0 +1,56 @@
+[
+ {
+   "remote":      "emotion",
+   "repository":  "EmotionOS/android_kernel_zte_msm8996",
+   "target_path": "kernel/lge/msm8996",
+   "branch":      "nougat"
+ },
+ {
+   "remote":      "cm",
+   "repository":  "LineageOS/android_vendor_nxp-nfc_opensource_frameworks",
+   "target_path": "vendor/nxp-nfc/opensource/frameworks",
+   "branch":      "cm-14.1"
+ },
+ {
+   "remote":      "cm",
+   "repository":  "LineageOS/android_vendor_nxp-nfc_opensource_libnfc-nci",
+   "target_path": "vendor/nxp-nfc/opensource/libnfc-nci",
+   "branch":      "cm-14.1"
+ },
+ {
+   "remote":      "cm",
+   "repository":  "LineageOS/android_vendor_nxp-nfc_opensource_Nfc",
+   "target_path": "vendor/nxp-nfc/opensource/Nfc",
+   "branch":      "cm-14.1"
+ },
+ { 
+   "remote":      "cm",
+   "repository":  "LineageOS/android_packages_resources_devicesettings",
+   "target_path": "packages/resources/devicesettings",
+   "branch":      "cm-14.1"
+ },
+ { 
+   "remote":      "cm",
+   "repository":  "LineageOS/android_packages_apps_FlipFlap",
+   "target_path": "packages/apps/FlipFlap",
+   "branch":      "cm-14.1"
+ },
+ {
+   "remote":      "emotion",
+   "repository":  "EmotionOS/android_device_qcom_common",
+   "target_path": "device/qcom/common",
+   "branch":      "nougat"
+ },
+ {
+   "remote":      "emotion",
+   "repository":  "EmotionOS/proprietary_vendor_qcom_binaries",
+   "target_path": "vendor/qcom/binaries",
+   "branch":      "nougat"
+ },
+ {
+   "remote":      "emotion",
+   "repository":  "EmotionOS/proprietary_vendor_zte",
+   "target_path": "vendor/zte",
+   "branch":      "nougat"
+ }
+]
