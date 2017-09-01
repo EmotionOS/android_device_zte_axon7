@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -82,7 +82,7 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /system/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "294" | "295")
+		    "239" | "293" | "294" | "295" | "304" | "313" | "338")
 			start msm_irqbalance;;
 		esac
 	fi
@@ -106,43 +106,6 @@ start_copying_prebuilt_qcril_db()
 baseband=`getprop ro.baseband`
 echo 1 > /proc/sys/net/ipv6/conf/default/accept_ra_defrtr
 
-#######################start###############################################
-# Check if download mode is enabled;
-# 0 means disable;1 means enable
-# default is zero=disable download
-#
-
-#default value is for user version
-zte_tmp_ver=1
-
-# is the current version eng/userdebug?
-if [ `getprop ro.secure` -eq 0 -o `getprop ro.debuggable` -eq 1 ];then
-zte_tmp_ver=0
-fi
-
-dlctrl=`getprop persist.sys.dlctrl`
-
-case "$zte_tmp_ver" in
-  "0")
-        case "$dlctrl" in
-             "1")
-                 echo 1 > /sys/module/msm_poweroff/parameters/download_mode;;
-             "0")
-                 echo 0 > /sys/module/msm_poweroff/parameters/download_mode;;
-        esac
-        ;;
-
-  "1")
-        case "$dlctrl" in
-             "1")
-                 echo 1 > /sys/module/msm_poweroff/parameters/download_mode;;
-             *)
-                 echo 0 > /sys/module/msm_poweroff/parameters/download_mode;;
-        esac
-        ;;
-
-esac
-####################end#######################################################
 case "$baseband" in
         "svlte2a")
         start bridgemgrd
@@ -256,7 +219,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992")
+    "msm8994" | "msm8992" | "msm8998")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -297,7 +260,7 @@ case "$target" in
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
         case "$soc_id" in
-             "294" | "295")
+             "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320")
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -312,17 +275,35 @@ case "$target" in
                   ;;
        esac
         ;;
-esac
-
-bootmode=`getprop ro.bootmode`
-emmc_boot=`getprop ro.boot.emmc`
-case "$emmc_boot"
-    in "true")
-        if [ "$bootmode" != "charger" ]; then # start rmt_storage and rfs_access
-            start rmt_storage
-            start rfs_access
+    "msm8953")
+	start_msm_irqbalance_8939
+        if [ -f /sys/devices/soc0/soc_id ]; then
+            soc_id=`cat /sys/devices/soc0/soc_id`
+        else
+            soc_id=`cat /sys/devices/system/soc/soc0/id`
         fi
-    ;;
+
+        if [ -f /sys/devices/soc0/hw_platform ]; then
+             hw_platform=`cat /sys/devices/soc0/hw_platform`
+        else
+             hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+        fi
+        case "$soc_id" in
+             "293" | "304" | "338" )
+                  case "$hw_platform" in
+                       "Surf")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                       "MTP")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                       "RCM")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                  esac
+                  ;;
+       esac
+        ;;
 esac
 
 #
@@ -365,3 +346,17 @@ fi
 cp /firmware/image/modem_pr/mbn_ota.txt /data/misc/radio/modem_config
 chown radio.radio /data/misc/radio/modem_config/mbn_ota.txt
 echo 1 > /data/misc/radio/copy_complete
+
+#check build variant for printk logging
+#current default minimum boot-time-default
+buildvariant=`getprop ro.build.type`
+case "$buildvariant" in
+    "userdebug" | "eng")
+        #set default loglevel to KERN_INFO
+        echo "6 6 1 7" > /proc/sys/kernel/printk
+        ;;
+    *)
+        #set default loglevel to KERN_WARNING
+        echo "4 4 1 4" > /proc/sys/kernel/printk
+        ;;
+esac
