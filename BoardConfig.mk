@@ -68,7 +68,7 @@ TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/zte/msm8996
-TARGET_KERNEL_CONFIG := emotionos_axon7_defconfig
+TARGET_KERNEL_CONFIG := emotion_axon7_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # Qualcomm support
