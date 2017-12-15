@@ -33,6 +33,7 @@ bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
 ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.wipower=true
+persist.bt.enableAptXHD=true
 
 #Camera
 camera.disable_zsl_mode=1
