@@ -51,12 +51,6 @@ failed ()
   exit $2
 }
 
-program_bdaddr ()
-{
-  /system/bin/btnvtool -O
-  logi "Bluetooth Address programmed successfully"
-}
-
 #
 # enable bluetooth profiles dynamically
 #
@@ -120,8 +114,8 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.pbap true
         setprop ro.qualcomm.bluetooth.ftp true
         setprop ro.qualcomm.bluetooth.nap true
-        setprop ro.bluetooth.sap true
-        setprop ro.bluetooth.dun true
+        setprop ro.bluetooth.sap false
+        setprop ro.bluetooth.dun false
         case $btsoc in
           "ath3k")
               setprop ro.qualcomm.bluetooth.map false
@@ -175,10 +169,10 @@ config_bt ()
            setprop ro.qualcomm.bt.hci_transport smd
        elif [ "$btsoc" = "rome" ]
        then
-           setprop ro.bluetooth.hfp.ver 1.7
+           setprop ro.bluetooth.hfp.ver 1.6
        fi
        ;;
-    "msm8998")
+    "msmcobalt")
        setprop ro.bluetooth.hfp.ver 1.6
        ;;
     *)

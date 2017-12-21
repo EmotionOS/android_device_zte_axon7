@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-**
-** Copyright 2016, The Android Open Source Project
-**
-** Licensed under the Apache License, Version 2.0 (the "License")
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
--->
 <device name="Android">
-    <!-- All values are in mAh except as noted -->
     <item name="none">0</item>
-    <item name="screen.on">149.746</item>
-    <item name="screen.full">185.258</item>
+    <item name="screen.on">68</item>
+    <item name="screen.full">218</item>
     <item name="bluetooth.active">17</item>
     <item name="bluetooth.on">0.6</item>
     <item name="wifi.on">3</item>
@@ -30,19 +12,13 @@
     <item name="dsp.video">56</item>
     <item name="camera.flashlight">100</item>
     <item name="camera.avg">548</item>
-    <item name="gps.on">60</item>
     <item name="radio.active">133</item>
-    <!-- The current consumed by the radio when it is scanning for a signal -->
     <item name="radio.scanning">67</item>
-    <!-- Current consumed by the radio at different signal strengths, when paging -->
-    <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
+    <item name="gps.on">60</item>
+    <array name="radio.on">
         <value>3</value>
         <value>2</value>
     </array>
-    <item name="modem.controller.idle">0</item>
-    <item name="modem.controller.rx">0</item>
-    <item name="modem.controller.tx">0</item>
-    <item name="modem.controller.voltage">0</item>
     <array name="cpu.clusters.cores">
         <value>2</value>
         <value>2</value>
@@ -139,12 +115,7 @@
     </array>
     <item name="cpu.idle">4.1</item>
     <item name="cpu.awake">16</item>
-    <item name="battery.capacity">3140</item>
-    <item name="wifi.controller.idle">0</item>
-    <item name="wifi.controller.rx">0</item>
-    <item name="wifi.controller.tx">0</item>
-    <array name="wifi.controller.tx_levels" />
-    <item name="wifi.controller.voltage">0</item>
+    <item name="battery.capacity">3100</item>
     <array name="wifi.batchedscan">
         <value>.0002</value>
         <value>.002</value>
