@@ -26,7 +26,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
      persist.radio.calls.on.ims=true \
      persist.radio.csvt.enabled=false \
      persist.radio.custom_ecc=1 \
-	 persist.radio.data_con_rprt=1 \
      persist.radio.flexmap_type=disabled \
      persist.radio.hw_mbn_update=1 \
      persist.radio.mt_sms_ack=20 \
@@ -67,7 +66,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
      persist.data.df.ul_mode=5 \
      persist.data.wda.enable=true \
      persist.rmnet.data.enable=true
-	 
-PRODUCT_PROPERTY_OVERRIDES += \
-     persist.sys.ssr.restart_level=ALL_ENABLE \
-     persist.sys.ztelog.enable=0
